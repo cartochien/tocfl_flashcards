@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>TOCFL Flash Cards</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-center">
+      <a class="navbar-brand" href="/">TOCFL Flash Cards</a>
+    </nav>
+    
+    <div class="container h-100">
+      <div class="row d-flex align-items-center">
+        <div class="card mx-auto" style="width: 35rem; margin-top: 5rem;">
+          <div class="card-header d-flex justify-content-between">
+            <div class="text-left">TOCFL Level {{card_level}}</div>
+            <div class="text-right cc-card-progress">&nbsp;</div>
+          </div>
+          <div class="card-body" style="padding-top: 3rem; padding-bottom: 5rem;">
+            <div class="row justify-content-center">
+              <h2 class="card-title text-center cc-vocab-word" style="padding-bottom: 0.5rem;">&nbsp</h2>
+            </div>
+            <div class = "row justify-content-center d-block">
+              <p class="text-center cc-input-result">&nbsp;</p>
+              <p class="text-center cc-vocab-answer">&nbsp;</p>
+            </div>
+            <div class="row">
+              <div class="col d-flex text-center justify-content-center">
+                <input class="cc-text-field" type="text" placeholder="Type in pinyin here" autofocus>
+                <button type="button" class="btn btn-info cc-submit-button" onclick="submit_answer()">Submit</button>
+                <button type="button" class="btn btn-info cc-next-button" onclick="next_word()">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  var selected_level = {{card_level}};
+  </script>
+ <!--  <script type="text/javascript">
+  var selected_level = {{card_level}};
+  var vocab_words;
+  var correct_answer = 0;
+  var index = 0;
+  var route = "data?level=" + selected_level;
+  var callback = function(returned_json) {
+  vocab_words = returned_json["cards"];
+  update_ui();
+  };
+  $.getJSON(route, callback);
+  
+  //define method that is called when user hits submit button (you will want to use vocab_words and index vars)
+  function submit_answer(){
+  var pinyin = vocab_words[index]["Pinyin"];
+  var pinyin_no_tones = vocab_words[index]["PinyinNoTones"];
+  var pinyin_num = vocab_words[index]["PinyinNum"];
+  var definition = vocab_words[index]["Definition"];
+  // var correct_answer = 0;
+  console.log($(".cc-text-field").val());
+  if ($(".cc-text-field").val() == pinyin_no_tones || $(".cc-text-field").val() == pinyin_num) {
+  correct_answer++;
+  $(".cc-input-result").text("That's correct!").append("&nbsp;").css('color', 'green');
+  $(".cc-vocab-answer").text(pinyin +  ': ' + '"' + definition + '"');
+  $(".cc-text-field").prop( "disabled", true);
+  $(".cc-submit-button").prop( "disabled", true);
+  }
+  else {
+  $(".cc-input-result").text("Sorry, that's not correct.").append("&nbsp;").css('color', 'red');
+  $(".cc-vocab-answer").text(pinyin +  ': ' + '"' + definition + '"');
+  $(".cc-text-field").prop( "disabled", true);
+  $(".cc-submit-button").prop( "disabled", true);
+  }
+  };
+  function next_word(){
+  index++;
+  console.log(index);
+  update_ui();
+  }
+  function update_ui(){
+  vocab_list_length = vocab_words.length;
+  if (vocab_words == null) {
+  return
+  }
+  if (index < vocab_list_length) {
+  var word = vocab_words[index]["Hanzi"];
+  $(".cc-vocab-word").text(word);
+  $(".cc-text-field").val("");
+  $(".cc-input-result").text("");
+  $(".cc-vocab-answer").text("");
+  $(".cc-text-field").prop( "disabled", false);
+  $(".cc-submit-button").prop( "disabled", false);
+  $(".cc-card-progress").text("Vocab Word #"+ (index + 1).toString() + "/" + vocab_list_length.toString())
+  //Vocab Word #__/__
+  }
+  
+  else if (index == vocab_list_length){
+  $(".cc-vocab-word").text("You're done!");
+  $(".cc-vocab-answer").text("You got " + correct_answer + "/" + vocab_list_length + " correct! That's " + ((correct_answer/vocab_list_length)*100) + "%!");
+  }
+  };
+  </script> -->
+    <script src="/public/js/cards.js"></script>
+  <!--   <script src="/public/js/cards.js"></script> -->
+</html>
