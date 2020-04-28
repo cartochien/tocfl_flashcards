@@ -7,23 +7,28 @@
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <title>TOCFL Flash Cards</title>
   </head>
-  <body>
-    <nav class="navbar navbar-light bg-light justify-content-center">
-      <a class="navbar-brand" href="/">TOCFL Flash Cards</a>
+  <body class="cc-background">
+    <nav class="navbar navbar-light bg-transparent justify-content-center">
+      <a class="navbar-brand" href="/">
+        <img src="/public/img/logo.png" alt="Help Me Learn Chinese" style="width:150px;height:36px;">
+      </a>
     </nav>
     
     <div class="container h-100">
       <div class="row d-flex align-items-center">
         <div class="card mx-auto" style="width: 35rem; margin-top: 5rem;">
-          <div class="card-header d-flex justify-content-between">
+          <div class="card-header d-flex justify-content-between cc-card-header">
             <div class="text-left">TOCFL Level {{card_level}}</div>
             <div class="text-right cc-card-progress">&nbsp;</div>
           </div>
-          <div class="card-body" style="padding-top: 3rem; padding-bottom: 5rem;">
+          <div class="card-body cc-vocab-body">
             <div class="row justify-content-center">
-              <h2 class="card-title text-center cc-vocab-word" style="padding-bottom: 0.5rem;">&nbsp</h2>
+              <h2 class="card-title text-center cc-vocab-word">&nbsp;</h2>
             </div>
             <div class = "row justify-content-center d-block">
               <p class="text-center cc-input-result">&nbsp;</p>
@@ -33,83 +38,31 @@
               <div class="col d-flex text-center justify-content-center">
                 <input class="cc-text-field" type="text" placeholder="Type in pinyin here" autofocus>
                 <button type="button" class="btn btn-info cc-submit-button" onclick="submit_answer()">Submit</button>
-                <button type="button" class="btn btn-info cc-next-button" onclick="next_word()">Next</button>
+                <button type="button" class="btn btn-info cc-next-button" onclick="next_word()">
+                  <svg class="bi bi-arrow-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.146 4.646a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-3 3a.5.5 0 01-.708-.708L12.793 8l-2.647-2.646a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M2 8a.5.5 0 01.5-.5H13a.5.5 0 010 1H2.5A.5.5 0 012 8z" clip-rule="evenodd"/>
+                  </svg>
+                  </button>
+                  <button type="button" class="btn btn-info cc-shuffle-button" onclick="shuffle_words()">
+                  <svg class="bi bi-shuffle cc-shuffle-button-icon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12.646 1.146a.5.5 0 01.708 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 01-.708-.708L14.793 4l-2.147-2.146a.5.5 0 010-.708zm0 8a.5.5 0 01.708 0l2.5 2.5a.5.5 0 010 .708l-2.5 2.5a.5.5 0 01-.708-.708L14.793 12l-2.147-2.146a.5.5 0 010-.708z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M0 4a.5.5 0 01.5-.5h2c3.053 0 4.564 2.258 5.856 4.226l.08.123c.636.97 1.224 1.865 1.932 2.539.718.682 1.538 1.112 2.632 1.112h2a.5.5 0 010 1h-2c-1.406 0-2.461-.57-3.321-1.388-.795-.755-1.441-1.742-2.055-2.679l-.105-.159C6.186 6.242 4.947 4.5 2.5 4.5h-2A.5.5 0 010 4z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M0 12a.5.5 0 00.5.5h2c3.053 0 4.564-2.258 5.856-4.226l.08-.123c.636-.97 1.224-1.865 1.932-2.539C11.086 4.93 11.906 4.5 13 4.5h2a.5.5 0 000-1h-2c-1.406 0-2.461.57-3.321 1.388-.795.755-1.441 1.742-2.055 2.679l-.105.159C6.186 9.758 4.947 11.5 2.5 11.5h-2a.5.5 0 00-.5.5z" clip-rule="evenodd"/>
+                  </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </body>
-
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-  var selected_level = {{card_level}};
-  </script>
- <!--  <script type="text/javascript">
-  var selected_level = {{card_level}};
-  var vocab_words;
-  var correct_answer = 0;
-  var index = 0;
-  var route = "data?level=" + selected_level;
-  var callback = function(returned_json) {
-  vocab_words = returned_json["cards"];
-  update_ui();
-  };
-  $.getJSON(route, callback);
-  
-  //define method that is called when user hits submit button (you will want to use vocab_words and index vars)
-  function submit_answer(){
-  var pinyin = vocab_words[index]["Pinyin"];
-  var pinyin_no_tones = vocab_words[index]["PinyinNoTones"];
-  var pinyin_num = vocab_words[index]["PinyinNum"];
-  var definition = vocab_words[index]["Definition"];
-  // var correct_answer = 0;
-  console.log($(".cc-text-field").val());
-  if ($(".cc-text-field").val() == pinyin_no_tones || $(".cc-text-field").val() == pinyin_num) {
-  correct_answer++;
-  $(".cc-input-result").text("That's correct!").append("&nbsp;").css('color', 'green');
-  $(".cc-vocab-answer").text(pinyin +  ': ' + '"' + definition + '"');
-  $(".cc-text-field").prop( "disabled", true);
-  $(".cc-submit-button").prop( "disabled", true);
-  }
-  else {
-  $(".cc-input-result").text("Sorry, that's not correct.").append("&nbsp;").css('color', 'red');
-  $(".cc-vocab-answer").text(pinyin +  ': ' + '"' + definition + '"');
-  $(".cc-text-field").prop( "disabled", true);
-  $(".cc-submit-button").prop( "disabled", true);
-  }
-  };
-  function next_word(){
-  index++;
-  console.log(index);
-  update_ui();
-  }
-  function update_ui(){
-  vocab_list_length = vocab_words.length;
-  if (vocab_words == null) {
-  return
-  }
-  if (index < vocab_list_length) {
-  var word = vocab_words[index]["Hanzi"];
-  $(".cc-vocab-word").text(word);
-  $(".cc-text-field").val("");
-  $(".cc-input-result").text("");
-  $(".cc-vocab-answer").text("");
-  $(".cc-text-field").prop( "disabled", false);
-  $(".cc-submit-button").prop( "disabled", false);
-  $(".cc-card-progress").text("Vocab Word #"+ (index + 1).toString() + "/" + vocab_list_length.toString())
-  //Vocab Word #__/__
-  }
-  
-  else if (index == vocab_list_length){
-  $(".cc-vocab-word").text("You're done!");
-  $(".cc-vocab-answer").text("You got " + correct_answer + "/" + vocab_list_length + " correct! That's " + ((correct_answer/vocab_list_length)*100) + "%!");
-  }
-  };
-  </script> -->
+    </body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var selected_level = {{card_level}};
+    </script>
     <script src="/public/js/cards.js"></script>
-  <!--   <script src="/public/js/cards.js"></script> -->
-</html>
+  </html>
