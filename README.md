@@ -3,10 +3,13 @@ This is a personal project I have been working on to help me study Chinese based
 
 ## Installation
 In your command prompt, do the following:  
-```> git clone https://github.com/cartochien/tocfl_flashcards```  
-```> cd tocfl_flashcards```  
-```> pip install -r requirements```  
-```> run app.py```  
+```
+> git clone https://github.com/cartochien/tocfl_flashcards  
+> cd tocfl_flashcards 
+> pip install -r requirements.txt 
+> run app.py
+```  
+
 Once you're running ```app.py```, go to ```http://127.0.0.1:5000/``` on your web browser and use the app!
 
 ## Demo  
