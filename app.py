@@ -16,32 +16,6 @@ import json
 #----------------------------------------------------------------------------#
 
 app = Flask(__name__, static_url_path='')
-# app.config.from_object('config')
-#db = SQLAlchemy(app)
-
-# Automatically tear down SQLAlchemy.
-'''
-@app.teardown_request
-def shutdown_session(exception=None):
-    db_session.remove()
-'''
-
-# Login required decorator.
-'''
-def login_required(test):
-    @wraps(test)
-    def wrap(*args, **kwargs):
-        if 'logged_in' in session:
-            return test(*args, **kwargs)
-        else:
-            flash('You need to login first.')
-            return redirect(url_for('login'))
-    return wrap
-'''
-#----------------------------------------------------------------------------#
-# Controllers.
-#----------------------------------------------------------------------------#
-
 
 @app.route('/public/<path:filename>')
 def static_files(filename):
@@ -61,10 +35,8 @@ def cards():
 
 @app.route('/data')
 def data():
-    # TO-DO: return different vocab words based on level 
     level = request.args.get('level')
     tocfl = json.loads(pd.read_excel('vocab/tocfl_' + level + '.xlsx').to_json(orient='records'))
-    # level = request.args.get('level')
     if level: 
         print(level)
         return {"cards": tocfl}
@@ -94,12 +66,10 @@ def forgot():
 
 # Error handlers.
 
-
 @app.errorhandler(500)
 def internal_error(error):
     #db_session.rollback()
     return render_template('errors/500.html'), 500
-
 
 @app.errorhandler(404)
 def not_found_error(error):
@@ -121,12 +91,4 @@ if not app.debug:
 
 # Default port:
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
-    # app.run(debug=True)
-
-# Or specify port manually:
-'''
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
-'''
+    app.run(debug=True)

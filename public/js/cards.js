@@ -108,6 +108,8 @@ $(document).ready(function() {
     $(".cc-text-field").focus();
 });
 
+//TO-DO: Find compatible ways to do this in other browswers
+// onkeypress???????
 document.body.onkeyup = function(e){
     if(e.keyCode == 13){
         if (user_is_answering) { 
@@ -119,5 +121,8 @@ document.body.onkeyup = function(e){
     }
     if(e.keyCode == 39){ 
         next_word()     
+    }
+    if(e.keyCode == 32){ 
+        shuffle_words()     
     }
 }
